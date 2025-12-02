@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="kk">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ханкөл мектебі - Жетістіктер Жүйесі | Батыс Қазақстан облысы</title>
+  <meta name="description" content="Ханкөл жалпы орта білім беретін мектебінің мұғалімдер мен оқушылар жетістіктерін тіркеу жүйесі. Аудандық, облыстық, республикалық жарыстар рейтингі.">
+  <meta name="keywords" content="Ханкөл мектебі, Қаратөбе ауданы, Батыс Қазақстан, жетістіктер, олимпиада, жарыс, рейтинг, мұғалімдер, оқушылар, білім">
+  <meta name="author" content="Ханкөл жалпы орта білім беретін мектебі">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Ханкөл мектебі - Жетістіктер Жүйесі">
+  <meta property="og:description" content="Мұғалімдер мен оқушылардың жетістіктерін тіркеу және рейтинг жүйесі">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://yourschool.edu.kz">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+
+    <style>
+    /* СИЗДІҢ БАСТАПҚЫ CSS КОДЫҢЫЗ (өзгеріссіз қалдырылды) */
+    /* ... (ұзын CSS кодыңыз осы жерде) ... */
+    
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body>
+  <div class="app-container">   <header class="header">
+    <div class="header-content">
+     <h1 id="siteTitle">🏆 Жетістіктер жүйесі</h1>
+     <p>Мұғалімдер мен оқушылардың жетістіктерін тіркеу және рейтинг жүйесі</p>
+    </div>
+   </header>   <nav class="nav-tabs">
+    <div class="nav-tabs-content"><button class="tab-btn active" onclick="switchTab('home')"> <span class="tab-icon">🏫</span> <span>Басты бет</span> </button> <button class="tab-btn" onclick="switchTab('teachers')"> <span class="tab-icon">👨‍🏫</span> <span id="teacherTabTitle">Мұғалімдер</span> </button> <button class="tab-btn" onclick="switchTab('students')"> <span class="tab-icon">👨‍🎓</span> <span id="studentTabTitle">Оқушылар</span> </button> <button class="tab-btn" onclick="switchTab('rating')"> <span class="tab-icon">📊</span> <span>Рейтинг</span> </button>
+    </div>
+   </nav>   <main class="main-content">    <div id="homeTab" class="tab-content active">
+     <div class="school-info-section">
+      <div class="school-header">
+       <div class="school-logo">
+        🏫
+       </div>
+       <h1 class="school-name" id="schoolName">Ханкөл жалпы орта білім беретін мектебі</h1>
+       <p class="school-tagline">Білім - болашаққа бастайтын жол</p>
+      </div>
+      <div class="school-details">
+       <div class="detail-card">
+        <div class="detail-icon">
+         📍
+        </div>
+        <p class="detail-label">Мекенжай</p>
+        <p class="detail-value" id="schoolAddress">Батыс Қазақстан облысы, Қаратөбе ауданы, Жусандой а.о Ханкөл ауылы, Құрманғалиев 2Б</p>
+       </div>
+       <div class="detail-card">
+        <div class="detail-icon">
+         📞
+        </div>
+        <p class="detail-label">Байланыс</p>
+        <p class="detail-value" id="schoolPhone">+7 (711-45)21-4-72</p>
+       </div>
+       <div class="detail-card">
+        <div class="detail-icon">
+         ✉️
+        </div>
+        <p class="detail-label">Электрондық пошта</p>
+        <p class="detail-value"><a href="mailto:Hankul_sosh@mail.ru" style="color: #3182ce; text-decoration: none;">Hankul_sosh@mail.ru</a></p>
+       </div>
+      </div>
+      <div class="school-description">
+       <h3>Мектеп туралы</h3>
+       <p id="schoolDescription">Біздің мектеп 2023 жылы құрылған. Мектепте жоғары білікті педагогтар жұмыс істейді. Оқушыларымыз үнемі аудандық және облыстық олимпиадаларда жетістіктерге жетеді. Мектеп заманауи техникалармен жабдықталған, спорт залдары, кітапхана, компьютерлік сыныптар бар.</p>
+      </div>
+      <div class="quick-stats">
+       <div class="stat-box">
+        <p class="stat-number" id="teacherCount">0</p>
+        <p class="stat-label">Мұғалімдер жетістігі</p>
+       </div>
+       <div class="stat-box">
+        <p class="stat-number" id="studentCount">0</p>
+        <p class="stat-label">Оқушылар жетістігі</p>
+       </div>
+       <div class="stat-box">
+        <p class="stat-number" id="totalCount">0</p>
+        <p class="stat-label">Жалпы жетістіктер</p>
+       </div>
+      </div>
+     </div>
+    </div>    <div id="teachersTab" class="tab-content">
+     <div class="limit-warning" id="teacherLimitWarning"><span class="limit-warning-icon">⚠️</span> <span>Ескерту: Максималды 999 жазба лимитіне жеттіңіз. Жаңа жетістік қосу үшін кейбіреулерін жойыңыз.</span>
+     </div>
+     <div class="add-form-card">
+      <div class="form-header">
+       <h2>Мұғалім жетістігін қосу</h2><button class="toggle-form-btn" onclick="toggleForm('teacher')"> <span id="teacherFormToggleText">+ Жаңа жетістік</span> </button>
+      </div>
+      <div class="form-content" id="teacherForm">
+       <form id="teacherAchievementForm" onsubmit="handleTeacherSubmit(event)">
+        <div class="form-grid">
+         <div class="form-group"><label for="teacherName">Мұғалімнің аты-жөні *</label> <input type="text" id="teacherName" required placeholder="Мысалы: Айгүл Сейітова">
+         </div>
+         <div class="form-group"><label for="teacherTitle">Жетістік атауы *</label> <input type="text" id="teacherTitle" required placeholder="Мысалы: Үздік мұғалім">
+         </div>
+         <div class="form-group"><label for="teacherCategory">Категория *</label> <select id="teacherCategory" required> <option value="">Таңдаңыз</option> <option value="academic">Академиялық</option> <option value="sports">Спорттық</option> <option value="art">Өнер</option> <option value="social">Әлеуметтік</option> <option value="other">Басқа</option> </select>
+         </div>
+         <div class="form-group"><label for="teacherLevel">Жарыс деңгейі *</label> <select id="teacherLevel" required> <option value="">Таңдаңыз</option> <option value="district">Аудандық</option> <option value="regional">Облыстық</option> <option value="national">Республикалық</option> <option value="international">Халықаралық</option> </select>
+         </div>
+         <div class="form-group"><label for="teacherPlace">Алған орны *</label> <select id="teacherPlace" required> <option value="">Таңдаңыз</option> <option value="1">🥇 1 орын</option> <option value="2">🥈 2 орын</option> <option value="3">🥉 3 орын</option> <option value="diploma">📜 Грамота</option> <option value="certificate">📃 Алғыс хат</option> <option value="sertifikat">📃 Сертификат</option> <option value="nomination">🏅 Номинация</option> </select>
+         </div>
+         <div class="form-group"><label for="teacherDate">Күні *</label> <input type="date" id="teacherDate" required>
+         </div>
+        </div>
+        <div class="form-group"><label for="teacherDescription">Сипаттама (міндетті емес)</label> <textarea id="teacherDescription" placeholder="Жетістік туралы қосымша ақпарат..."></textarea>
+        </div>
+        <div class="form-actions"><button type="submit" class="submit-btn" id="teacherSubmitBtn"> <span class="loading-spinner" id="teacherSpinner"></span> <span id="teacherSubmitText">Сақтау</span> </button> <button type="button" class="cancel-btn" onclick="cancelForm('teacher')">Болдырмау</button>
+        </div>
+       </form>
+      </div>
+     </div>
+     <div class="achievements-header">
+      <h2>Мұғалімдер жетістіктері</h2>
+      <div class="filter-buttons"><button class="filter-btn active" onclick="filterAchievements('teacher', 'all')">Барлығы</button> <button class="filter-btn" onclick="filterAchievements('teacher', 'academic')">Академиялық</button> <button class="filter-btn" onclick="filterAchievements('teacher', 'sports')">Спорт</button> <button class="filter-btn" onclick="filterAchievements('teacher', 'art')">Өнер</button>
+      </div>
+     </div>
+     <div id="teacherAchievements" class="achievements-grid"></div>
+    </div>    <div id="studentsTab" class="tab-content">
+     <div class="limit-warning" id="studentLimitWarning"><span class="limit-warning-icon">⚠️</span> <span>Ескерту: Максималды 999 жазба лимитіне жеттіңіз. Жаңа жетістік қосу үшін кейбіреулерін жойыңыз.</span>
+     </div>
+     <div class="add-form-card">
+      <div class="form-header">
+       <h2>Оқушы жетістігін қосу</h2><button class="toggle-form-btn" onclick="toggleForm('student')"> <span id="studentFormToggleText">+ Жаңа жетістік</span> </button>
+      </div>
+      <div class="form-content" id="studentForm">
+       <form id="studentAchievementForm" onsubmit="handleStudentSubmit(event)">
+        <div class="form-grid">
+         <div class="form-group"><label for="studentName">Оқушының аты-жөні *</label> <input type="text" id="studentName" required placeholder="Мысалы: Ерлан Нұрланов">
+         </div>
+         <div class="form-group"><label for="studentClass">Сынып *</label> <input type="text" id="studentClass" required placeholder="Мысалы: 8А">
+         </div>
+         <div class="form-group"><label for="studentTeacher">Жетекші мұғалім *</label> <input type="text" id="studentTeacher" required placeholder="Мысалы: Айгүл Сейітова">
+         </div>
+         <div class="form-group"><label for="studentTitle">Жетістік атауы *</label> <input type="text" id="studentTitle" required placeholder="Мысалы: Олимпиада жеңімпазы">
+         </div>
+         <div class="form-group"><label for="studentCategory">Категория *</label> <select id="studentCategory" required> <option value="">Таңдаңыз</option> <option value="academic">Академиялық</option> <option value="sports">Спорттық</option> <option value="art">Өнер</option> <option value="social">Әлеуметтік</option> <option value="other">Басқа</option> </select>
+         </div>
+         <div class="form-group"><label for="studentLevel">Жарыс деңгейі *</label> <select id="studentLevel" required> <option value="">Таңдаңыз</option> <option value="district">Аудандық</option> <option value="regional">Облыстық</option> <option value="national">Республикалық</option> <option value="international">Халықаралық</option> </select>
+         </div>
+         <div class="form-group"><label for="studentPlace">Алған орны *</label> <select id="studentPlace" required> <option value="">Таңдаңыз</option> <option value="1">🥇 1 орын</option> <option value="2">🥈 2 орын</option> <option value="3">🥉 3 орын</option> <option value="diploma">📜 Грамота</option> <option value="certificate">📃 Алғыс хат</option> <option value="sertifikat">📃 Сертификат</option> <option value="nomination">🏅 Номинация</option> </select>
+         </div>
+         <div class="form-group"><label for="studentDate">Күні *</label> <input type="date" id="studentDate" required>
+         </div>
+        </div>
+        <div class="form-group"><label for="studentDescription">Сипаттама (міндетті емес)</label> <textarea id="studentDescription" placeholder="Жетістік туралы қосымша ақпарат..."></textarea>
+        </div>
+        <div class="form-actions"><button type="submit" class="submit-btn" id="studentSubmitBtn"> <span class="loading-spinner" id="studentSpinner"></span> <span id="studentSubmitText">Сақтау</span> </button> <button type="button" class="cancel-btn" onclick="cancelForm('student')">Болдырмау</button>
+        </div>
+       </form>
+      </div>
+     </div>
+     <div class="achievements-header">
+      <h2>Оқушылар жетістіктері</h2>
+      <div class="filter-buttons"><button class="filter-btn active" onclick="filterAchievements('student', 'all')">Барлығы</button> <button class="filter-btn" onclick="filterAchievements('student', 'academic')">Академиялық</button> <button class="filter-btn" onclick="filterAchievements('student', 'sports')">Спорт</button> <button class="filter-btn" onclick="filterAchievements('student', 'art')">Өнер</button>
+      </div>
+     </div>
+     <div id="studentAchievements" class="achievements-grid"></div>
+    </div>    <div id="ratingTab" class="tab-content">
+     <div class="rating-section">
+      <div class="rating-header">
+       <h2>Жетістіктер рейтингі</h2>
+       <div class="rating-toggle"><button class="rating-toggle-btn active" onclick="switchRating('teachers')">Мұғалімдер</button> <button class="rating-toggle-btn" onclick="switchRating('students')">Оқушылар</button> <button class="rating-toggle-btn" onclick="switchRating('classes')">Сыныптар</button>
+       </div>
+      </div>
+      <div id="teachersRating" class="rating-list"></div>
+      <div id="studentsRating" class="rating-list" style="display: none;"></div>
+      <div id="classesRating" class="rating-list" style="display: none;"></div>
+     </div>
+    </div>
+   </main>   <div id="toast" class="toast"><span class="toast-icon" id="toastIcon"></span> <span class="toast-message" id="toastMessage"></span>
+   </div>
+  </div>
+  <script>
+    // ----------------------------------------------------------------------
+    // GLOBAL CONFIGURATION & STATE
+    // ----------------------------------------------------------------------
+    const STORAGE_KEY = 'hancol_achievements';
+    const MAX_LIMIT = 999;
+    
+    let allAchievements = [];
+    let currentTab = 'home';
+    let currentRating = 'teachers';
+    let currentTeacherFilter = 'all';
+    let currentStudentFilter = 'all';
+    
+    // ----------------------------------------------------------------------
+    // 1. LOCAL STORAGE ДЕРЕКТЕРІН БАСҚАРУ (CRUD)
+    // ----------------------------------------------------------------------
+    
+    function loadAchievements() {
+        try {
+            const storedData = localStorage.getItem(STORAGE_KEY);
+            allAchievements = storedData ? JSON.parse(storedData) : [];
+        } catch (e) {
+            console.error("Local storage-тан деректерді жүктеу қатесі:", e);
+            allAchievements = [];
+        }
+    }
+
+    function saveAchievements() {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(allAchievements));
+        } catch (e) {
+            console.error("Local storage-қа деректерді сақтау қатесі:", e);
+            showToast('Қате: Деректерді сақтау мүмкін болмады (Естелік толы болуы мүмкін)', 'error');
+            return false;
+        }
+        return true;
+    }
+
+    async function createAchievement(achievement) {
+        if (allAchievements.length >= MAX_LIMIT) return { isOk: false };
+        
+        // __backendId генерациясы
+        const newAchievement = { 
+            ...achievement, 
+            __backendId: Date.now().toString() + Math.random().toString(36).substring(2, 9)
+        };
+        allAchievements.push(newAchievement);
+        
+        if (saveAchievements()) {
+            updateUI();
+            return { isOk: true };
+        }
+        return { isOk: false };
+    }
+
+    window.deleteAchievement = async function(backendId) { // HTML-ден шақыру үшін global ету
+        const initialLength = allAchievements.length;
+        allAchievements = allAchievements.filter(a => a.__backendId !== backendId);
+        
+        if (saveAchievements() && allAchievements.length < initialLength) {
+            updateUI();
+            showToast('Жетістік жойылды', 'success');
+            return { isOk: true };
+        }
+        showToast('Қате: Жетістік жойылмады', 'error');
+        return { isOk: false };
+    }
+
+    // ----------------------------------------------------------------------
+    // 2. ИНТЕРФЕЙСТІ ЖАҢАРТУ ЖӘНЕ БАСҚАРУ (UI)
+    // ----------------------------------------------------------------------
+
+    function initializeApp() {
+        loadAchievements(); // Деректерді жүктеу
+        updateUI(); // Интерфейсті жаңарту
+        
+        // Күнді бүгінгі күнмен толтыру
+        const today = new Date().toISOString().split('T')[0];
+        const teacherDateEl = document.getElementById('teacherDate');
+        const studentDateEl = document.getElementById('studentDate');
+        if (teacherDateEl) teacherDateEl.value = today;
+        if (studentDateEl) studentDateEl.value = today;
+    }
+    
+    function updateUI() {
+        checkLimits();
+        updateStats();
+        renderAchievements('teacher');
+        renderAchievements('student');
+        renderRating(currentRating);
+    }
+    
+    function updateStats() {
+        const teacherAchievements = allAchievements.filter(a => a.type === 'teacher');
+        const studentAchievements = allAchievements.filter(a => a.type === 'student');
+        const totalCount = allAchievements.length;
+        
+        const teacherCountEl = document.getElementById('teacherCount');
+        const studentCountEl = document.getElementById('studentCount');
+        const totalCountEl = document.getElementById('totalCount');
+        
+        if (teacherCountEl) teacherCountEl.textContent = teacherAchievements.length;
+        if (studentCountEl) studentCountEl.textContent = studentAchievements.length;
+        if (totalCountEl) totalCountEl.textContent = totalCount;
+    }
+
+    function checkLimits() {
+        const teacherWarning = document.getElementById('teacherLimitWarning');
+        const studentWarning = document.getElementById('studentLimitWarning');
+        
+        if (allAchievements.length >= MAX_LIMIT) {
+            if (teacherWarning) teacherWarning.classList.add('show');
+            if (studentWarning) studentWarning.classList.add('show');
+        } else {
+            if (teacherWarning) teacherWarning.classList.remove('show');
+            if (studentWarning) studentWarning.classList.remove('show');
+        }
+    }
+
+    window.switchTab = function(tab) { // HTML-ден шақыру үшін global ету
+        currentTab = tab;
+        
+        document.querySelectorAll('.nav-tabs .tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.main-content .tab-content').forEach(content => content.classList.remove('active'));
+        
+        let clickedButton = event.target.closest('.tab-btn');
+        if (clickedButton) clickedButton.classList.add('active');
+
+        if (tab === 'home') {
+            document.getElementById('homeTab').classList.add('active');
+            updateStats();
+        } else if (tab === 'teachers') {
+            document.getElementById('teachersTab').classList.add('active');
+            renderAchievements('teacher');
+        } else if (tab === 'students') {
+            document.getElementById('studentsTab').classList.add('active');
+            renderAchievements('student');
+        } else if (tab === 'rating') {
+            document.getElementById('ratingTab').classList.add('active');
+            renderRating(currentRating);
+        }
+    }
+
+    window.toggleForm = function(type) { // HTML-ден шақыру үшін global ету
+        const form = document.getElementById(`${type}Form`);
+        const toggleText = document.getElementById(`${type}FormToggleText`);
+        
+        if (form.classList.contains('show')) {
+            form.classList.remove('show');
+            toggleText.textContent = '+ Жаңа жетістік';
+        } else {
+            form.classList.add('show');
+            toggleText.textContent = '✕ Жабу';
+        }
+    }
+
+    window.cancelForm = function(type) { // HTML-ден шақыру үшін global ету
+        document.getElementById(`${type}AchievementForm`).reset();
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById(`${type}Date`).value = today;
+        toggleForm(type);
+    }
+
+    // ----------------------------------------------------------------------
+    // 3. ФОРМАНЫ ЖІБЕРУ ЛОГИКАСЫ (САҚТАЛУ МӘСЕЛЕСІН ШЕШУ)
+    // ----------------------------------------------------------------------
+    
+    // Мұғалім Жетістігін Сақтау
+    async function handleTeacherSubmit(event) {
+        event.preventDefault();
+        
+        if (allAchievements.length >= MAX_LIMIT) {
+            showToast('Максималды лимитке жеттіңіз (999)', 'error');
+            return;
+        }
+        
+        const submitBtn = document.getElementById('teacherSubmitBtn');
+        const spinner = document.getElementById('teacherSpinner');
+        const submitText = document.getElementById('teacherSubmitText');
+        
+        // Қатып қалуды болдырмау үшін UI-ды өзгертеміз
+        submitBtn.disabled = true;
+        spinner.style.display = 'inline-block';
+        submitText.textContent = 'Сақталуда...';
+        
+        const achievement = {
+            type: 'teacher',
+            name: document.getElementById('teacherName').value.trim(),
+            title: document.getElementById('teacherTitle').value.trim(),
+            category: document.getElementById('teacherCategory').value,
+            level: document.getElementById('teacherLevel').value,
+            place: document.getElementById('teacherPlace').value,
+            date: document.getElementById('teacherDate').value,
+            description: document.getElementById('teacherDescription').value.trim() || '',
+            className: '',
+            teacherName: '',
+            createdAt: new Date().toISOString()
+        };
+        
+        const result = await createAchievement(achievement); 
+        
+        // UI-ды бастапқы күйге қайтару
+        submitBtn.disabled = false;
+        spinner.style.display = 'none';
+        submitText.textContent = 'Сақтау';
+        
+        if (result.isOk) {
+            showToast('Жетістік сәтті қосылды!', 'success');
+            document.getElementById('teacherAchievementForm').reset();
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('teacherDate').value = today;
+            cancelForm('teacher'); // Форманы жабу
+        } else {
+            showToast('Қате: Жетістік қосылмады', 'error');
+        }
+    }
+
+    // Оқушы Жетістігін Сақтау
+    async function handleStudentSubmit(event) {
+        event.preventDefault();
+        
+        if (allAchievements.length >= MAX_LIMIT) {
+            showToast('Максималды лимитке жеттіңіз (999)', 'error');
+            return;
+        }
+        
+        const submitBtn = document.getElementById('studentSubmitBtn');
+        const spinner = document.getElementById('studentSpinner');
+        const submitText = document.getElementById('studentSubmitText');
+        
+        // Қатып қалуды болдырмау үшін UI-ды өзгертеміз
+        submitBtn.disabled = true;
+        spinner.style.display = 'inline-block';
+        submitText.textContent = 'Сақталуда...';
+        
+        const achievement = {
+            type: 'student',
+            name: document.getElementById('studentName').value.trim(),
+            title: document.getElementById('studentTitle').value.trim(),
+            category: document.getElementById('studentCategory').value,
+            level: document.getElementById('studentLevel').value,
+            place: document.getElementById('studentPlace').value,
+            date: document.getElementById('studentDate').value,
+            description: document.getElementById('studentDescription').value.trim() || '',
+            className: document.getElementById('studentClass').value.trim(),
+            teacherName: document.getElementById('studentTeacher').value.trim(),
+            createdAt: new Date().toISOString()
+        };
+        
+        const result = await createAchievement(achievement);
+        
+        // UI-ды бастапқы күйге қайтару
+        submitBtn.disabled = false;
+        spinner.style.display = 'none';
+        submitText.textContent = 'Сақтау';
+        
+        if (result.isOk) {
+            showToast('Жетістік сәтті қосылды!', 'success');
+            document.getElementById('studentAchievementForm').reset();
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('studentDate').value = today;
+            cancelForm('student'); // Форманы жабу
+        } else {
+            showToast('Қате: Жетістік қосылмады', 'error');
+        }
+    }
+    
+    // ----------------------------------------------------------------------
+    // 4. ТІЗІМДІ РЕНДЕРЛЕУ ЖӘНЕ ФИЛЬТРЛЕУ
+    // ----------------------------------------------------------------------
+
+    window.filterAchievements = function(type, category) { // HTML-ден шақыру үшін global ету
+        if (type === 'teacher') {
+            currentTeacherFilter = category;
+        } else {
+            currentStudentFilter = category;
+        }
+        
+        const tabEl = document.getElementById(type === 'teacher' ? 'teachersTab' : 'studentsTab');
+        const filterButtons = tabEl.querySelector('.filter-buttons').querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        
+        const clickedButton = event.target.closest('.filter-btn');
+        if (clickedButton) clickedButton.classList.add('active');
+        
+        renderAchievements(type);
+    }
+
+    function calculatePoints(achievement) {
+        let points = 0;
+        
+        if (achievement.level === 'national') {
+            points = 3;
+        } else if (achievement.level === 'regional') {
+            points = 2;
+        } else if (achievement.level === 'district') {
+            points = 1;
+        }
+        
+        return points;
+    }
+
+    function renderAchievements(type) {
+        const container = document.getElementById(`${type}Achievements`);
+        const filter = type === 'teacher' ? currentTeacherFilter : currentStudentFilter;
+        
+        let filtered = allAchievements.filter(a => a.type === type);
+        if (filter !== 'all') {
+            filtered = filtered.filter(a => a.category === filter);
+        }
+        
+        filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        if (filtered.length === 0) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">📋</div>
+                    <h3>Жетістіктер жоқ</h3>
+                    <p>Жаңа жетістік қосу үшін жоғарыдағы түймені басыңыз</p>
+                </div>
+            `;
+            return;
+        }
+        
+        container.innerHTML = filtered.map(achievement => `
+            <div class="achievement-card">
+                <div class="achievement-header">
+                    <span class="achievement-category category-${achievement.category}">
+                        ${getCategoryName(achievement.category)}
+                    </span>
+                </div>
+                <h3 class="achievement-title">${achievement.title}</h3>
+                <p class="achievement-name">👤 ${achievement.name}</p>
+                ${achievement.level ? `<p class="achievement-name">🏆 ${getLevelName(achievement.level)} (${calculatePoints(achievement)} ұпай)</p>` : ''}
+                ${achievement.place ? `<p class="achievement-name">${getPlaceName(achievement.place)}</p>` : ''}
+                ${achievement.teacherName ? `<p class="achievement-name">👨‍🏫 Жетекші: ${achievement.teacherName}</p>` : ''}
+                ${achievement.description ? `<p class="achievement-description">${achievement.description}</p>` : ''}
+                <div class="achievement-footer">
+                    <span class="achievement-date">📅 ${formatDate(achievement.date)}</span>
+                    ${achievement.className ? `<span class="achievement-class">🎓 ${achievement.className}</span>` : ''}
+                </div>
+                <button class="delete-btn" onclick="deleteAchievement('${achievement.__backendId}')">
+                    🗑️ Жою
+                </button>
+            </div>
+        `).join('');
+    }
+
+    // ----------------------------------------------------------------------
+    // 5. РЕЙТИНГТІ БАСҚАРУ
+    // ----------------------------------------------------------------------
+
+    window.switchRating = function(type) { // HTML-ден шақыру үшін global ету
+        currentRating = type;
+        
+        document.querySelectorAll('.rating-toggle-btn').forEach(btn => btn.classList.remove('active'));
+        
+        const clickedButton = event.target.closest('.rating-toggle-btn');
+        if (clickedButton) clickedButton.classList.add('active');
+
+        document.getElementById('teachersRating').style.display = 'none';
+        document.getElementById('studentsRating').style.display = 'none';
+        document.getElementById('classesRating').style.display = 'none';
+        
+        document.getElementById(`${type}Rating`).style.display = 'flex';
+        renderRating(type);
+    }
+
+    function renderRating(type) {
+        const container = document.getElementById(`${type}Rating`);
+        
+        if (type === 'teachers') {
+            renderTeachersRating(container);
+        } else if (type === 'students') {
+            renderStudentsRating(container);
+        } else if (type === 'classes') {
+            renderClassesRating(container);
+        }
+    }
+
+    function renderTeachersRating(container) {
+        const teachers = {};
+        allAchievements.filter(a => a.type === 'teacher').forEach(achievement => {
+            const nameKey = achievement.name.toUpperCase();
+            if (!teachers[nameKey]) {
+                teachers[nameKey] = {
+                    name: achievement.name,
+                    count: 0,
+                    points: 0
+                };
+            }
+            teachers[nameKey].count++;
+            teachers[nameKey].points += calculatePoints(achievement);
+        });
+        
+        const sorted = Object.values(teachers).sort((a, b) => b.points - a.points);
+        
+        if (sorted.length === 0) {
+            container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">📊</div><h3>Рейтинг жоқ</h3><p>Жетістіктер қосылғаннан кейін рейтинг көрінеді</p></div>`;
+            return;
+        }
+        
+        container.innerHTML = sorted.map((teacher, index) => `
+            <div class="rating-item">
+                <div class="rating-rank">${index + 1}</div>
+                <div class="rating-info">
+                    <h3 class="rating-name">${teacher.name}</h3>
+                    <p class="rating-details">${teacher.count} жетістік</p>
+                </div>
+                <div class="rating-score">
+                    <p class="rating-points">${teacher.points}</p>
+                    <p class="rating-label">ұпай</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderStudentsRating(container) {
+        const students = {};
+        allAchievements.filter(a => a.type === 'student').forEach(achievement => {
+            const nameKey = achievement.name.toUpperCase();
+            if (!students[nameKey]) {
+                students[nameKey] = {
+                    name: achievement.name,
+                    className: achievement.className,
+                    count: 0,
+                    points: 0
+                };
+            }
+            students[nameKey].count++;
+            students[nameKey].points += calculatePoints(achievement);
+        });
+        
+        const sorted = Object.values(students).sort((a, b) => b.points - a.points);
+        
+        if (sorted.length === 0) {
+            container.innerHTML = `<div class="empty-state" style="color: #2d3748;"><div class="empty-state-icon">📊</div><h3 style="color: #2d3748;">Рейтинг жоқ</h3><p style="color: #4a5568;">Жетістіктер қосылғаннан кейін рейтинг көрінеді</p></div>`;
+            return;
+        }
+        
+        container.innerHTML = sorted.map((student, index) => `
+            <div class="rating-item">
+                <div class="rating-rank">${index + 1}</div>
+                <div class="rating-info">
+                    <h3 class="rating-name">${student.name}</h3>
+                    <p class="rating-details">${student.className} • ${student.count} жетістік</p>
+                </div>
+                <div class="rating-score">
+                    <p class="rating-points">${student.points}</p>
+                    <p class="rating-label">ұпай</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function renderClassesRating(container) {
+        const classes = {};
+        allAchievements.filter(a => a.type === 'student' && a.className).forEach(achievement => {
+            const classKey = achievement.className.toUpperCase();
+            if (!classes[classKey]) {
+                classes[classKey] = {
+                    className: achievement.className,
+                    count: 0,
+                    points: 0,
+                    students: new Set()
+                };
+            }
+            classes[classKey].count++;
+            classes[classKey].points += calculatePoints(achievement);
+            classes[classKey].students.add(achievement.name);
+        });
+        
+        const sorted = Object.values(classes).sort((a, b) => b.points - a.points);
+        
+        if (sorted.length === 0) {
+            container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">📊</div><h3>Рейтинг жоқ</h3><p>Жетістіктер қосылғаннан кейін рейтинг көрінеді</p></div>`;
+            return;
+        }
+        
+        container.innerHTML = sorted.map((classData, index) => `
+            <div class="rating-item">
+                <div class="rating-rank">${index + 1}</div>
+                <div class="rating-info">
+                    <h3 class="rating-name">${classData.className} сынып</h3>
+                    <p class="rating-details">${classData.students.size} оқушы • ${classData.count} жетістік</p>
+                </div>
+                <div class="rating-score">
+                    <p class="rating-points">${classData.points}</p>
+                    <p class="rating-label">ұпай</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // ----------------------------------------------------------------------
+    // 6. КӨМЕКШІ ФУНКЦИЯЛАР (UTILITIES)
+    // ----------------------------------------------------------------------
+
+    function getCategoryName(category) {
+        const names = {
+            academic: 'Академиялық',
+            sports: 'Спорттық',
+            art: 'Өнер',
+            social: 'Әлеуметтік',
+            other: 'Басқа'
+        };
+        return names[category] || category;
+    }
+
+    function getLevelName(level) {
+        const names = {
+            district: 'Аудандық',
+            regional: 'Облыстық',
+            national: 'Республикалық',
+            international: 'Халықаралық'
+        };
+        return names[level] || level;
+    }
+
+    function getPlaceName(place) {
+        const names = {
+            '1': '🥇 1 орын',
+            '2': '🥈 2 орын',
+            '3': '🥉 3 орын',
+            'diploma': '📜 Грамота',
+            'certificate': '📃 Алғыс хат',
+            'sertifikat': '📃 Сертификат',
+            'nomination': '🏅 Номинация'
+        };
+        return names[place] || place;
+    }
+
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const months = ['қаң', 'ақп', 'нау', 'сәу', 'мам', 'мау', 'шіл', 'там', 'қыр', 'қаз', 'қар', 'жел'];
+        return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+    }
+
+    function showToast(message, type) {
+        const toast = document.getElementById('toast');
+        const icon = document.getElementById('toastIcon');
+        const messageEl = document.getElementById('toastMessage');
+        
+        toast.className = `toast ${type}`;
+        icon.textContent = type === 'success' ? '✓' : '✗';
+        messageEl.textContent = message;
+        
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    // Initialize App
+    document.addEventListener('DOMContentLoaded', initializeApp);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a79177060badf08',t:'MTc2NDY2MDMzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
