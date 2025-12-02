@@ -16,9 +16,847 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
-
-    <style>
-    /* Сіздің толық CSS кодыңыз осы жерде қалады */
+    
+  <style>
+    /* СИЗДІҢ БАСТАПҚЫ CSS КОДЫҢЫЗ */
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans', Arial, sans-serif;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e8ba3 100%);
+      min-height: 100%;
+      color: #2d3748;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    .app-container {
+      width: 100%;
+      min-height: 100%;
+      padding: 0;
+    }
+    
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+      color: white;
+      padding: 32px 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .header h1 {
+      margin: 0 0 8px 0;
+      font-size: 42px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .header p {
+      margin: 0;
+      font-size: 18px;
+      opacity: 0.9;
+    }
+    
+    /* Navigation Tabs */
+    .nav-tabs {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-tabs-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+      padding: 0 24px;
+    }
+    
+    .tab-btn {
+      flex: 1;
+      padding: 20px 32px;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: #4a5568;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+    }
+    
+    .tab-btn:hover {
+      background: #f7fafc;
+      color: #2d3748;
+    }
+    
+    .tab-btn.active {
+      color: #3182ce;
+      border-bottom-color: #3182ce;
+      background: #ebf8ff;
+    }
+    
+    .tab-icon {
+      font-size: 24px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    
+    /* Main Content */
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Add Achievement Form */
+    .add-form-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      margin-bottom: 32px;
+    }
+    
+    .form-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    
+    .form-header h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #2d3748;
+      flex: 1;
+    }
+    
+    .toggle-form-btn {
+      background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+    }
+    
+    .toggle-form-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(49, 130, 206, 0.4);
+    }
+    
+    .form-content {
+      display: none;
+      margin-top: 24px;
+    }
+    
+    .form-content.show {
+      display: block;
+    }
+    
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-group label {
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #3182ce;
+      box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    
+    .submit-btn {
+      flex: 1;
+      background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+    }
+    
+    .submit-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(72, 187, 120, 0.4);
+    }
+    
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    .cancel-btn {
+      flex: 1;
+      background: #e2e8f0;
+      color: #2d3748;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .cancel-btn:hover {
+      background: #cbd5e0;
+    }
+    
+    .loading-spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Achievements List */
+    .achievements-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    
+    .achievements-header h2 {
+      margin: 0;
+      font-size: 28px;
+      color: white;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      backdrop-filter: blur(10px);
+    }
+    
+    .filter-btn:hover {
+      background: rgba(255,255,255,0.3);
+      border-color: rgba(255,255,255,0.5);
+    }
+    
+    .filter-btn.active {
+      background: white;
+      color: #3182ce;
+      border-color: white;
+    }
+    
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .achievement-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      transition: all 0.3s;
+      border-left: 5px solid #3182ce;
+      position: relative;
+    }
+    
+    .achievement-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    }
+    
+    .achievement-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    
+    .achievement-category {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .category-academic { background: #ebf8ff; color: #2c5282; }
+    .category-sports { background: #f0fff4; color: #276749; }
+    .category-art { background: #fef5e7; color: #975a16; }
+    .category-social { background: #fce4ec; color: #c2185b; }
+    .category-other { background: #f3e5f5; color: #6a1b9a; }
+    
+    .achievement-award {
+      background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(237, 137, 54, 0.3);
+    }
+    
+    .achievement-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #2d3748;
+      margin: 0 0 8px 0;
+    }
+    
+    .achievement-name {
+      font-size: 15px;
+      color: #4a5568;
+      margin: 0 0 12px 0;
+      font-weight: 600;
+    }
+    
+    .achievement-description {
+      font-size: 15px;
+      color: #718096;
+      line-height: 1.6;
+      margin: 0 0 12px 0;
+    }
+    
+    .achievement-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid #e2e8f0;
+    }
+    
+    .achievement-date {
+      font-size: 14px;
+      color: #a0aec0;
+    }
+    
+    .achievement-class {
+      font-size: 14px;
+      color: #4a5568;
+      font-weight: 600;
+    }
+    
+    .delete-btn {
+      background: #fc8181;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 12px;
+      width: 100%;
+    }
+    
+    .delete-btn:hover {
+      background: #f56565;
+    }
+    
+    /* Rating Section */
+    .rating-section {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    
+    .rating-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    
+    .rating-header h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #2d3748;
+    }
+    
+    .rating-toggle {
+      display: flex;
+      gap: 8px;
+      background: #f7fafc;
+      padding: 4px;
+      border-radius: 10px;
+    }
+    
+    .rating-toggle-btn {
+      background: transparent;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #4a5568;
+    }
+    
+    .rating-toggle-btn.active {
+      background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+      color: white;
+      box-shadow: 0 2px 8px rgba(49, 130, 206, 0.3);
+    }
+    
+    .rating-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .rating-item {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+      border-radius: 12px;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+    
+    .rating-item:hover {
+      border-color: #3182ce;
+      transform: translateX(4px);
+    }
+    
+    .rating-rank {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+      margin-right: 20px;
+      box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+    }
+    
+    .rating-item:nth-child(1) .rating-rank {
+      background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+      box-shadow: 0 4px 12px rgba(237, 137, 54, 0.4);
+      font-size: 24px;
+    }
+    
+    .rating-item:nth-child(2) .rating-rank {
+      background: linear-gradient(135deg, #a0aec0 0%, #718096 100%);
+      box-shadow: 0 4px 12px rgba(113, 128, 150, 0.4);
+    }
+    
+    .rating-item:nth-child(3) .rating-rank {
+      background: linear-gradient(135deg, #d69e2e 0%, #b7791f 100%);
+      box-shadow: 0 4px 12px rgba(183, 121, 31, 0.4);
+    }
+    
+    .rating-info {
+      flex: 1;
+    }
+    
+    .rating-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #2d3748;
+      margin: 0 0 4px 0;
+    }
+    
+    .rating-details {
+      font-size: 14px;
+      color: #718096;
+      margin: 0;
+    }
+    
+    .rating-score {
+      text-align: right;
+    }
+    
+    .rating-points {
+      font-size: 28px;
+      font-weight: 700;
+      color: #3182ce;
+      margin: 0 0 4px 0;
+    }
+    
+    .rating-label {
+      font-size: 13px;
+      color: #a0aec0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: white;
+    }
+    
+    .empty-state-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+    
+    .empty-state h3 {
+      font-size: 24px;
+      margin: 0 0 8px 0;
+      color: white;
+    }
+    
+    .empty-state p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      margin: 0;
+    }
+    
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: white;
+      padding: 16px 24px;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      display: none;
+      align-items: center;
+      gap: 12px;
+      z-index: 1000;
+      animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    .toast.show {
+      display: flex;
+    }
+    
+    .toast.success {
+      border-left: 4px solid #48bb78;
+    }
+    
+    .toast.error {
+      border-left: 4px solid #f56565;
+    }
+    
+    .toast-icon {
+      font-size: 24px;
+    }
+    
+    .toast-message {
+      font-size: 15px;
+      color: #2d3748;
+      font-weight: 600;
+    }
+    
+    .limit-warning {
+      background: linear-gradient(135deg, #fed7d7 0%, #fc8181 100%);
+      color: #742a2a;
+      padding: 16px 24px;
+      border-radius: 10px;
+      margin-bottom: 24px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3);
+    }
+    
+    .limit-warning.show {
+      display: flex;
+    }
+    
+    .limit-warning-icon {
+      font-size: 24px;
+    }
+    
+    /* School Info Section */
+    .school-info-section {
+      background: white;
+      border-radius: 20px;
+      padding: 48px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .school-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 3px solid #e2e8f0;
+    }
+    
+    .school-logo {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+    
+    .school-name {
+      font-size: 38px;
+      font-weight: 700;
+      color: #2d3748;
+      margin: 0 0 12px 0;
+      line-height: 1.3;
+    }
+    
+    .school-tagline {
+      font-size: 20px;
+      color: #718096;
+      margin: 0;
+      font-style: italic;
+    }
+    
+    .school-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    
+    .detail-card {
+      background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+      padding: 24px;
+      border-radius: 12px;
+      border-left: 4px solid #3182ce;
+    }
+    
+    .detail-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    
+    .detail-label {
+      font-size: 14px;
+      color: #a0aec0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+    }
+    
+    .detail-value {
+      font-size: 18px;
+      color: #2d3748;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.5;
+    }
+    
+    .school-description {
+      background: linear-gradient(135deg, #ebf8ff 0%, #e0e7ff 100%);
+      padding: 32px;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+      margin-bottom: 32px;
+    }
+    
+    .school-description h3 {
+      font-size: 24px;
+      color: #2d3748;
+      margin: 0 0 16px 0;
+    }
+    
+    .school-description p {
+      font-size: 18px;
+      color: #4a5568;
+      line-height: 1.8;
+      margin: 0;
+    }
+    
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+    
+    .stat-box {
+      background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+      padding: 24px;
+      border-radius: 12px;
+      color: white;
+      box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+    }
+    
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+    }
+    
+    .stat-label {
+      font-size: 15px;
+      opacity: 0.9;
+      margin: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .school-info-section {
+        padding: 32px 24px;
+      }
+      
+      .school-name {
+        font-size: 28px;
+      }
+      
+      .quick-stats {
+        grid-template-columns: 1fr;
+      }
+      
+      .school-details {
+        grid-template-columns: 1fr;
+      }
+      .header h1 {
+        font-size: 32px;
+      }
+      
+      .nav-tabs-content {
+        padding: 0 12px;
+      }
+      
+      .tab-btn {
+        padding: 16px 20px;
+        font-size: 16px;
+      }
+      
+      .main-content {
+        padding: 24px 16px;
+      }
+      
+      .achievements-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .rating-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+      }
+      
+      .rating-rank {
+        margin-right: 0;
+      }
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
  </head>
@@ -173,12 +1011,14 @@
    </main>   <div id="toast" class="toast"><span class="toast-icon" id="toastIcon"></span> <span class="toast-message" id="toastMessage"></span>
    </div>
   </div>
+  
   <script>
-    // Local Storage үшін айнымалы
+    // ----------------------------------------------------------------------
+    // GLOBAL CONFIGURATION & STATE
+    // ----------------------------------------------------------------------
     const STORAGE_KEY = 'hancol_achievements';
     const MAX_LIMIT = 999;
     
-    // Config және State
     let allAchievements = [];
     let currentTab = 'home';
     let currentRating = 'teachers';
@@ -186,7 +1026,7 @@
     let currentStudentFilter = 'all';
     
     // ----------------------------------------------------------------------
-    // 1. Local Storage-пен Жұмыс (CRUD)
+    // 1. LOCAL STORAGE ДЕРЕКТЕРІН БАСҚАРУ (CRUD)
     // ----------------------------------------------------------------------
     
     function loadAchievements() {
@@ -213,7 +1053,7 @@
     async function createAchievement(achievement) {
         if (allAchievements.length >= MAX_LIMIT) return { isOk: false };
         
-        // __backendId орнына уақыт негізінде бірегей ID береміз
+        // __backendId генерациясы
         const newAchievement = { 
             ...achievement, 
             __backendId: Date.now().toString() + Math.random().toString(36).substring(2, 9)
@@ -227,24 +1067,26 @@
         return { isOk: false };
     }
 
-    async function deleteAchievement(backendId) {
+    window.deleteAchievement = async function(backendId) { // HTML-ден шақыру үшін global ету
         const initialLength = allAchievements.length;
         allAchievements = allAchievements.filter(a => a.__backendId !== backendId);
         
         if (saveAchievements() && allAchievements.length < initialLength) {
             updateUI();
+            showToast('Жетістік жойылды', 'success');
             return { isOk: true };
         }
+        showToast('Қате: Жетістік жойылмады', 'error');
         return { isOk: false };
     }
 
     // ----------------------------------------------------------------------
-    // 2. UI Және Логика
+    // 2. ИНТЕРФЕЙСТІ ЖАҢАРТУ ЖӘНЕ БАСҚАРУ (UI)
     // ----------------------------------------------------------------------
 
     function initializeApp() {
-        loadAchievements(); // Деректерді жүктеу
-        updateUI(); // Интерфейсті жаңарту
+        loadAchievements(); 
+        updateUI(); 
         
         // Күнді бүгінгі күнмен толтыру
         const today = new Date().toISOString().split('T')[0];
@@ -267,20 +1109,15 @@
         const studentAchievements = allAchievements.filter(a => a.type === 'student');
         const totalCount = allAchievements.length;
         
-        const teacherCountEl = document.getElementById('teacherCount');
-        const studentCountEl = document.getElementById('studentCount');
-        const totalCountEl = document.getElementById('totalCount');
-        
-        if (teacherCountEl) teacherCountEl.textContent = teacherAchievements.length;
-        if (studentCountEl) studentCountEl.textContent = studentAchievements.length;
-        if (totalCountEl) totalCountEl.textContent = totalCount;
+        document.getElementById('teacherCount').textContent = teacherAchievements.length;
+        document.getElementById('studentCount').textContent = studentAchievements.length;
+        document.getElementById('totalCount').textContent = totalCount;
     }
 
     function checkLimits() {
         const teacherWarning = document.getElementById('teacherLimitWarning');
         const studentWarning = document.getElementById('studentLimitWarning');
         
-        // Лимит тек локальді еске қатысты, бірақ бастапқы лимитті сақтау
         if (allAchievements.length >= MAX_LIMIT) {
             if (teacherWarning) teacherWarning.classList.add('show');
             if (studentWarning) studentWarning.classList.add('show');
@@ -290,34 +1127,24 @@
         }
     }
 
-    // Tab Management
-    function switchTab(tab) {
+    window.switchTab = function(tab) { // HTML-ден шақыру үшін global ету
         currentTab = tab;
         
         document.querySelectorAll('.nav-tabs .tab-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelectorAll('.main-content .tab-content').forEach(content => content.classList.remove('active'));
         
-        // Event target-ты табуды дұрыстау
-        let clickedButton = event.target.closest('.tab-btn');
+        // Event target-ты дұрыс табу
+        const clickedButton = event.target.closest('.tab-btn');
         if (clickedButton) clickedButton.classList.add('active');
 
-        if (tab === 'home') {
-            document.getElementById('homeTab').classList.add('active');
-            updateStats();
-        } else if (tab === 'teachers') {
-            document.getElementById('teachersTab').classList.add('active');
-            renderAchievements('teacher');
-        } else if (tab === 'students') {
-            document.getElementById('studentsTab').classList.add('active');
-            renderAchievements('student');
-        } else if (tab === 'rating') {
-            document.getElementById('ratingTab').classList.add('active');
+        document.getElementById(`${tab}Tab`).classList.add('active');
+        
+        if (tab === 'rating') {
             renderRating(currentRating);
         }
     }
 
-    // Form Management (өзгеріссіз)
-    function toggleForm(type) {
+    window.toggleForm = function(type) { // HTML-ден шақыру үшін global ету
         const form = document.getElementById(`${type}Form`);
         const toggleText = document.getElementById(`${type}FormToggleText`);
         
@@ -330,15 +1157,18 @@
         }
     }
 
-    function cancelForm(type) {
+    window.cancelForm = function(type) { // HTML-ден шақыру үшін global ету
         document.getElementById(`${type}AchievementForm`).reset();
-        // Reset date value after reset
         const today = new Date().toISOString().split('T')[0];
         document.getElementById(`${type}Date`).value = today;
         toggleForm(type);
     }
 
-    // Teacher Form Submit
+    // ----------------------------------------------------------------------
+    // 3. ФОРМАНЫ ЖІБЕРУ ЛОГИКАСЫ (МАКСАТҚА ЖЕТУ)
+    // ----------------------------------------------------------------------
+    
+    // Мұғалім Жетістігін Сақтау
     async function handleTeacherSubmit(event) {
         event.preventDefault();
         
@@ -351,6 +1181,7 @@
         const spinner = document.getElementById('teacherSpinner');
         const submitText = document.getElementById('teacherSubmitText');
         
+        // Қатып қалуды болдырмау үшін UI-ды өзгертеміз
         submitBtn.disabled = true;
         spinner.style.display = 'inline-block';
         submitText.textContent = 'Сақталуда...';
@@ -364,13 +1195,14 @@
             place: document.getElementById('teacherPlace').value,
             date: document.getElementById('teacherDate').value,
             description: document.getElementById('teacherDescription').value.trim() || '',
-            className: '', // Мұғалім үшін бос
-            teacherName: '', // Мұғалім үшін бос
+            className: '',
+            teacherName: '',
             createdAt: new Date().toISOString()
         };
         
-        const result = await createAchievement(achievement); // dataSdk.create орнына createAchievement
+        const result = await createAchievement(achievement); 
         
+        // UI-ды бастапқы күйге қайтару
         submitBtn.disabled = false;
         spinner.style.display = 'none';
         submitText.textContent = 'Сақтау';
@@ -380,13 +1212,13 @@
             document.getElementById('teacherAchievementForm').reset();
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('teacherDate').value = today;
-            cancelForm('teacher');
+            toggleForm('teacher'); // Форманы жабу
         } else {
             showToast('Қате: Жетістік қосылмады', 'error');
         }
     }
 
-    // Student Form Submit
+    // Оқушы Жетістігін Сақтау
     async function handleStudentSubmit(event) {
         event.preventDefault();
         
@@ -399,6 +1231,7 @@
         const spinner = document.getElementById('studentSpinner');
         const submitText = document.getElementById('studentSubmitText');
         
+        // Қатып қалуды болдырмау үшін UI-ды өзгертеміз
         submitBtn.disabled = true;
         spinner.style.display = 'inline-block';
         submitText.textContent = 'Сақталуда...';
@@ -417,8 +1250,9 @@
             createdAt: new Date().toISOString()
         };
         
-        const result = await createAchievement(achievement); // dataSdk.create орнына createAchievement
+        const result = await createAchievement(achievement);
         
+        // UI-ды бастапқы күйге қайтару
         submitBtn.disabled = false;
         spinner.style.display = 'none';
         submitText.textContent = 'Сақтау';
@@ -428,55 +1262,37 @@
             document.getElementById('studentAchievementForm').reset();
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('studentDate').value = today;
-            cancelForm('student');
+            toggleForm('student'); // Форманы жабу
         } else {
             showToast('Қате: Жетістік қосылмады', 'error');
         }
     }
+    
+    // ----------------------------------------------------------------------
+    // 4. ТІЗІМДІ РЕНДЕРЛЕУ ЖӘНЕ ФИЛЬТРЛЕУ
+    // ----------------------------------------------------------------------
 
-    // Delete Achievement
-    // Бұл функция енді жоғарыдағы deleteAchievement(backendId) функциясын шақырады
-    window.deleteAchievement = async function(backendId) { // Глобалды қолжетімді ету үшін window-ға қосылды
-        const result = await deleteAchievement(backendId);
-        
-        if (result.isOk) {
-            showToast('Жетістік жойылды', 'success');
-        } else {
-            showToast('Қате: Жетістік жойылмады', 'error');
-        }
-    }
-
-
-    // Filter Achievements (өзгеріссіз)
-    window.filterAchievements = function(type, category) { // Глобалды қолжетімді ету үшін window-ға қосылды
+    window.filterAchievements = function(type, category) { // HTML-ден шақыру үшін global ету
         if (type === 'teacher') {
             currentTeacherFilter = category;
         } else {
             currentStudentFilter = category;
         }
         
-        // Кнопканы дұрыс таңдау үшін
         const tabEl = document.getElementById(type === 'teacher' ? 'teachersTab' : 'studentsTab');
         const filterButtons = tabEl.querySelector('.filter-buttons').querySelectorAll('.filter-btn');
         
         filterButtons.forEach(btn => btn.classList.remove('active'));
         
-        // Тексеру: егер функцияны батырмадан шақырсақ, event.target қолданамыз
-        if (event && event.target.classList.contains('filter-btn')) {
-            event.target.classList.add('active');
-        } else {
-             // Егер тікелей шақырсақ, 'all' батырмасын белсендіру
-             tabEl.querySelector(`.filter-btn[onclick*="'${category}'"]`).classList.add('active');
-        }
+        const clickedButton = event.target.closest('.filter-btn');
+        if (clickedButton) clickedButton.classList.add('active');
         
         renderAchievements(type);
     }
 
-    // Calculate Points based on level (өзгеріссіз)
     function calculatePoints(achievement) {
         let points = 0;
         
-        // Деңгей бойынша ұпай
         if (achievement.level === 'national') {
             points = 3;
         } else if (achievement.level === 'regional') {
@@ -485,15 +1301,9 @@
             points = 1;
         }
         
-        // Орынға байланысты қосымша ұпай енгізуге болады, бірақ қазіргі логика сақталды.
-        // Егер 1, 2, 3 орын болса, ұпайды көбейтетін логиканы қосуға болады:
-        // if (achievement.place === '1') points *= 2;
-        // else if (achievement.place === '2') points *= 1.5;
-        
         return points;
     }
 
-    // Render Achievements (өзгеріссіз)
     function renderAchievements(type) {
         const container = document.getElementById(`${type}Achievements`);
         const filter = type === 'teacher' ? currentTeacherFilter : currentStudentFilter;
@@ -503,7 +1313,6 @@
             filtered = filtered.filter(a => a.category === filter);
         }
         
-        // Sort by date (newest first)
         filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
         
         if (filtered.length === 0) {
@@ -540,23 +1349,24 @@
             </div>
         `).join('');
     }
+    
+    // ----------------------------------------------------------------------
+    // 5. РЕЙТИНГТІ БАСҚАРУ
+    // ----------------------------------------------------------------------
 
-    // Rating Management (өзгеріссіз, бірақ глобалдық шақыруды қамтамасыз етті)
-    window.switchRating = function(type) {
+    window.switchRating = function(type) { // HTML-ден шақыру үшін global ету
         currentRating = type;
         
-        const toggleButtons = document.querySelectorAll('.rating-toggle-btn');
-        toggleButtons.forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.rating-toggle-btn').forEach(btn => btn.classList.remove('active'));
         
-        // Event target-ты дұрыс таңдау
-        let clickedButton = event.target.closest('.rating-toggle-btn');
+        const clickedButton = event.target.closest('.rating-toggle-btn');
         if (clickedButton) clickedButton.classList.add('active');
 
         document.getElementById('teachersRating').style.display = 'none';
         document.getElementById('studentsRating').style.display = 'none';
         document.getElementById('classesRating').style.display = 'none';
         
-        document.getElementById(`${type}Rating`).style.display = 'flex'; // block орнына flex қолданылды
+        document.getElementById(`${type}Rating`).style.display = 'flex';
         renderRating(type);
     }
 
@@ -574,9 +1384,8 @@
 
     function renderTeachersRating(container) {
         const teachers = {};
-        
         allAchievements.filter(a => a.type === 'teacher').forEach(achievement => {
-            const nameKey = achievement.name.toUpperCase(); // Аты-жөнін регистрге қарамай топтау
+            const nameKey = achievement.name.toUpperCase();
             if (!teachers[nameKey]) {
                 teachers[nameKey] = {
                     name: achievement.name,
@@ -591,13 +1400,7 @@
         const sorted = Object.values(teachers).sort((a, b) => b.points - a.points);
         
         if (sorted.length === 0) {
-            container.innerHTML = `
-                <div class="empty-state">
-                    <div class="empty-state-icon">📊</div>
-                    <h3>Рейтинг жоқ</h3>
-                    <p>Жетістіктер қосылғаннан кейін рейтинг көрінеді</p>
-                </div>
-            `;
+            container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">📊</div><h3>Рейтинг жоқ</h3><p>Жетістіктер қосылғаннан кейін рейтинг көрінеді</p></div>`;
             return;
         }
         
@@ -618,7 +1421,6 @@
 
     function renderStudentsRating(container) {
         const students = {};
-        
         allAchievements.filter(a => a.type === 'student').forEach(achievement => {
             const nameKey = achievement.name.toUpperCase();
             if (!students[nameKey]) {
@@ -636,13 +1438,7 @@
         const sorted = Object.values(students).sort((a, b) => b.points - a.points);
         
         if (sorted.length === 0) {
-            container.innerHTML = `
-                <div class="empty-state" style="color: #2d3748;">
-                    <div class="empty-state-icon">📊</div>
-                    <h3 style="color: #2d3748;">Рейтинг жоқ</h3>
-                    <p style="color: #4a5568;">Жетістіктер қосылғаннан кейін рейтинг көрінеді</p>
-                </div>
-            `;
+            container.innerHTML = `<div class="empty-state" style="color: #2d3748;"><div class="empty-state-icon">📊</div><h3 style="color: #2d3748;">Рейтинг жоқ</h3><p style="color: #4a5568;">Жетістіктер қосылғаннан кейін рейтинг көрінеді</p></div>`;
             return;
         }
         
@@ -663,7 +1459,6 @@
 
     function renderClassesRating(container) {
         const classes = {};
-        
         allAchievements.filter(a => a.type === 'student' && a.className).forEach(achievement => {
             const classKey = achievement.className.toUpperCase();
             if (!classes[classKey]) {
@@ -682,13 +1477,7 @@
         const sorted = Object.values(classes).sort((a, b) => b.points - a.points);
         
         if (sorted.length === 0) {
-            container.innerHTML = `
-                <div class="empty-state">
-                    <div class="empty-state-icon">📊</div>
-                    <h3>Рейтинг жоқ</h3>
-                    <p>Жетістіктер қосылғаннан кейін рейтинг көрінеді</p>
-                </div>
-            `;
+            container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">📊</div><h3>Рейтинг жоқ</h3><p>Жетістіктер қосылғаннан кейін рейтинг көрінеді</p></div>`;
             return;
         }
         
@@ -707,7 +1496,10 @@
         `).join('');
     }
 
-    // Utility Functions (қателер дұрысталды)
+    // ----------------------------------------------------------------------
+    // 6. КӨМЕКШІ ФУНКЦИЯЛАР (UTILITIES)
+    // ----------------------------------------------------------------------
+
     function getCategoryName(category) {
         const names = {
             academic: 'Академиялық',
@@ -737,14 +1529,14 @@
             'diploma': '📜 Грамота',
             'certificate': '📃 Алғыс хат',
             'sertifikat': '📃 Сертификат',
-            'nomination': '🏅 Номинация' // Емле қатесі дұрысталды
+            'nomination': '🏅 Номинация'
         };
         return names[place] || place;
     }
 
     function formatDate(dateString) {
         const date = new Date(dateString);
-        const months = ['қаң', 'ақп', 'нау', 'сәу', 'мам', 'мау', 'шіл', 'там', 'қыр', 'қаз', 'қар', 'жел']; // 'қыр' (қыркүйек) дұрысталды
+        const months = ['қаң', 'ақп', 'нау', 'сәу', 'мам', 'мау', 'шіл', 'там', 'қыр', 'қаз', 'қар', 'жел'];
         return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
     }
 
@@ -764,8 +1556,8 @@
         }, 3000);
     }
 
-    // Initialize App
+    // Қосымша іске қосу
     document.addEventListener('DOMContentLoaded', initializeApp);
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a79177060badf08',t:'MTc2NDY2MDMzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ </body>
 </html>
